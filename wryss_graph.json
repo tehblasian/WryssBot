@@ -1,0 +1,1170 @@
+[
+    {
+        "id": "b9d6336e.64817",
+        "type": "watson-conversation-v1",
+        "z": "84fce38c.6155d",
+        "name": "Wryss",
+        "workspaceid": "e5872e73-98bb-423f-91b1-2c5350f99e2c",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "default-endpoint": true,
+        "service-endpoint": "https://gateway.watsonplatform.net/conversation/api",
+        "x": 518.6113204956055,
+        "y": 604.2778587341309,
+        "wires": [
+            [
+                "d4a8a63c.82c308",
+                "ea968763.ee0098"
+            ]
+        ]
+    },
+    {
+        "id": "3cf57a81.d006f6",
+        "type": "chatbot-telegram-receive",
+        "z": "84fce38c.6155d",
+        "bot": "115894e8.1b7d2b",
+        "x": 95,
+        "y": 478.0000228881836,
+        "wires": [
+            [
+                "dd4caeac.4bbcb",
+                "95e7cd71.75312",
+                "bdff1cab.58632"
+            ]
+        ]
+    },
+    {
+        "id": "970df80e.453708",
+        "type": "chatbot-telegram-send",
+        "z": "84fce38c.6155d",
+        "bot": "115894e8.1b7d2b",
+        "track": false,
+        "outputs": 0,
+        "x": 1359.8572082519531,
+        "y": 510.57141876220703,
+        "wires": []
+    },
+    {
+        "id": "9b7a19dc.2fa7e8",
+        "type": "change",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 554.2500457763672,
+        "y": 468.5000696182251,
+        "wires": [
+            [
+                "b9d6336e.64817"
+            ]
+        ]
+    },
+    {
+        "id": "3f6ce1ed.6f6fbe",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar newObj = {\n    type: \"message\",\n    content: msg.payload.output.text[0],\n    //chatId: 539563556,\n    chatId: flow.get(\"chat\"),\n    inbound: false,\n    messageId: 36,\n    options: {}\n};\nmsg.payload = newObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940.0001335144043,
+        "y": 595.0000400543213,
+        "wires": [
+            [
+                "4348d169.ecd1f",
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "45082737.c066d8",
+        "type": "visual-recognition-v3",
+        "z": "84fce38c.6155d",
+        "name": "Classify",
+        "apikey": "__PWRD__",
+        "image-feature": "classifyImage",
+        "lang": "en",
+        "x": 704,
+        "y": 394.0000648498535,
+        "wires": [
+            [
+                "aa63ef93.35688",
+                "8f88a35c.1f374"
+            ]
+        ]
+    },
+    {
+        "id": "a3d00acc.d63478",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 706,
+        "y": 269.0000705718994,
+        "wires": []
+    },
+    {
+        "id": "a89e9dec.6e47f",
+        "type": "change",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 367.00001525878906,
+        "y": 430.00002670288086,
+        "wires": [
+            [
+                "5b397b18.ce3474"
+            ]
+        ]
+    },
+    {
+        "id": "6eaabe64.bce61",
+        "type": "http request",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "",
+        "x": 257,
+        "y": 328,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24e000b6.e1461",
+        "type": "inject",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 289,
+        "y": 241,
+        "wires": [
+            [
+                "67bd1b6f.403304"
+            ]
+        ]
+    },
+    {
+        "id": "67bd1b6f.403304",
+        "type": "change",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "http://www.allwhitebackground.com/images/3/3383.jpg",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 435,
+        "y": 276,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa63ef93.35688",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nmsg.payload = msg.result.images[0].classifiers[0].classes;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 853.0000076293945,
+        "y": 398.0000638961792,
+        "wires": [
+            [
+                "b841923b.7ffcd"
+            ]
+        ]
+    },
+    {
+        "id": "dd4caeac.4bbcb",
+        "type": "switch",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "message",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "photo",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "audio",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 3,
+        "x": 258.2500343322754,
+        "y": 478.25002098083496,
+        "wires": [
+            [
+                "ae4f6077.6de0f"
+            ],
+            [
+                "37416ea1.793552"
+            ],
+            [
+                "2bf714f.e4154ec"
+            ]
+        ]
+    },
+    {
+        "id": "b841923b.7ffcd",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar newObj = {\n    type: \"message\",\n    content: msg.payload[0].class,\n    //chatId: 539563556,\n    chatId: flow.get(\"chat\"),\n    inbound: false,\n    messageId: 36,\n    options: {}\n};\nmsg.payload = newObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 795.7142791748047,
+        "y": 502.8571529388428,
+        "wires": [
+            [
+                "9a27ccb9.86ebf",
+                "d73dcdbf.5cef9",
+                "89dad027.8c59e",
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "9a27ccb9.86ebf",
+        "type": "change",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e827fdd9.9c1cb",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 1210,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "cb99f91a.6a22f8",
+        "type": "inject",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 700,
+        "y": 180,
+        "wires": [
+            [
+                "633f9485.90c71c"
+            ]
+        ]
+    },
+    {
+        "id": "37756013.0eb36",
+        "type": "http in",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "url": "/api/message",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 95,
+        "y": 108.8571605682373,
+        "wires": [
+            [
+                "bdff1cab.58632",
+                "dd4caeac.4bbcb"
+            ]
+        ]
+    },
+    {
+        "id": "bdff1cab.58632",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 301.4285659790039,
+        "y": 65.71430969238281,
+        "wires": []
+    },
+    {
+        "id": "4348d169.ecd1f",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 625.7142744064331,
+        "y": 60.00000762939453,
+        "wires": []
+    },
+    {
+        "id": "78f51347.b151bc",
+        "type": "watson-translator",
+        "z": "84fce38c.6155d",
+        "name": "WryssTranslate",
+        "action": "translate",
+        "basemodel": "en-nl",
+        "domain": "news",
+        "srclang": "en",
+        "destlang": "nl",
+        "password": "8imoecuaH2tY",
+        "custom": "",
+        "domainhidden": "news",
+        "srclanghidden": "en",
+        "destlanghidden": "nl",
+        "basemodelhidden": "en-nl",
+        "customhidden": "",
+        "filetype": "forcedglossary",
+        "trainid": "",
+        "lgparams2": true,
+        "neural": true,
+        "default-endpoint": true,
+        "service-endpoint": "https://gateway.watsonplatform.net/language-translator/api",
+        "x": 879.1667213439941,
+        "y": 849.0001125335693,
+        "wires": [
+            [
+                "936846b1.6eb3e8",
+                "bfc371cb.8024f"
+            ]
+        ]
+    },
+    {
+        "id": "936846b1.6eb3e8",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 1093.0003128051758,
+        "y": 851.3333644866943,
+        "wires": []
+    },
+    {
+        "id": "61b80888.6fbd78",
+        "type": "inject",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "topic": "",
+        "payload": "\"sentence\"",
+        "payloadType": "flow",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 251.00005340576172,
+        "y": 829.0002117156982,
+        "wires": [
+            [
+                "89dad027.8c59e"
+            ]
+        ]
+    },
+    {
+        "id": "89dad027.8c59e",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nmsg.destlang = flow.get(\"language\");\nmsg.payload = msg.payload.content;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 702.0001106262207,
+        "y": 847.3333606719971,
+        "wires": [
+            [
+                "78f51347.b151bc"
+            ]
+        ]
+    },
+    {
+        "id": "27d4cc4.af06734",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "flow.set(\"word\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 319.0000228881836,
+        "y": 717.3333511352539,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e61770a0.ef31f",
+        "type": "inject",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "topic": "",
+        "payload": "House",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 118,
+        "y": 737.3333129882812,
+        "wires": [
+            [
+                "27d4cc4.af06734"
+            ]
+        ]
+    },
+    {
+        "id": "633f9485.90c71c",
+        "type": "http request",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": " https://fathomless-mountain-78195.herokuapp.com",
+        "tls": "",
+        "x": 1108.7143020629883,
+        "y": 257.4286136627197,
+        "wires": [
+            [
+                "e827fdd9.9c1cb"
+            ]
+        ]
+    },
+    {
+        "id": "d4a8a63c.82c308",
+        "type": "switch",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "property": "payload.output.text[0]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "nl",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ja",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "es",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "pt",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "it",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Would you like me to translate this?",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "translate",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 8,
+        "x": 594.1666793823242,
+        "y": 547.3334197998047,
+        "wires": [
+            [
+                "f5cdb4db.555be8"
+            ],
+            [
+                "f5cdb4db.555be8"
+            ],
+            [
+                "f5cdb4db.555be8"
+            ],
+            [
+                "f5cdb4db.555be8"
+            ],
+            [
+                "f5cdb4db.555be8"
+            ],
+            [
+                "b146d80b.b0f698"
+            ],
+            [
+                "9c4b4b49.810738"
+            ],
+            [
+                "3f6ce1ed.6f6fbe",
+                "74a85107.ad687"
+            ]
+        ]
+    },
+    {
+        "id": "f5cdb4db.555be8",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nflow.set(\"language\",msg.payload.output.text[0]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 785.000373840332,
+        "y": 730.3333568572998,
+        "wires": [
+            [
+                "7d94757e.49ab3c"
+            ]
+        ]
+    },
+    {
+        "id": "d73dcdbf.5cef9",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nflow.set(\"word\",msg.payload.content);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1146.4285850524902,
+        "y": 473.61911487579346,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d94757e.49ab3c",
+        "type": "chatbot-message",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "message": [
+            {
+                "message": "Great choice. Try sending me a picture or give me something to translate. You can say it out loud!"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "x": 910.0002174377441,
+        "y": 730.3333559036255,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "bfc371cb.8024f",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar newObj = {\n    type: \"message\",\n    content: msg.payload,\n    //chatId: 539563556,\n    chatId: flow.get(\"chat\"),\n    inbound: false,\n    messageId: 36,\n    options: {}\n};\nmsg.payload = newObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 903.0002212524414,
+        "y": 793.3333597183228,
+        "wires": [
+            [
+                "8ee086c5.14bf38"
+            ]
+        ]
+    },
+    {
+        "id": "8ee086c5.14bf38",
+        "type": "delay",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1038.1668128967285,
+        "y": 792.3333587646484,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "b146d80b.b0f698",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "if (flow.get(\"type\")==\"audio\"){\n    flow.set(\"sentence\", msg.transcription);\n    return msg;\n}\n\nflow.set(\"sentence\", msg.originalMessage.text);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 817.0001220703125,
+        "y": 567.6666917800903,
+        "wires": [
+            [
+                "3f6ce1ed.6f6fbe"
+            ]
+        ]
+    },
+    {
+        "id": "f952019e.af0f",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1208.8571128845215,
+        "y": 575.714280128479,
+        "wires": [
+            [
+                "970df80e.453708"
+            ]
+        ]
+    },
+    {
+        "id": "9c4b4b49.810738",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nmsg.destlang = flow.get(\"language\");\nmsg.payload = flow.get(\"sentence\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 698,
+        "y": 923.6666259765625,
+        "wires": [
+            [
+                "39e4170a.96bcd8"
+            ]
+        ]
+    },
+    {
+        "id": "39e4170a.96bcd8",
+        "type": "watson-translator",
+        "z": "84fce38c.6155d",
+        "name": "WryssTranslate",
+        "action": "translate",
+        "basemodel": "es-en",
+        "domain": "news",
+        "srclang": "en",
+        "destlang": "es",
+        "password": "NqfelWbBXJou",
+        "custom": "",
+        "domainhidden": "news",
+        "srclanghidden": "en",
+        "destlanghidden": "es",
+        "basemodelhidden": "es-en",
+        "customhidden": "",
+        "filetype": "forcedglossary",
+        "trainid": "",
+        "lgparams2": true,
+        "neural": true,
+        "default-endpoint": true,
+        "service-endpoint": "https://gateway.watsonplatform.net/language-translator/api",
+        "x": 885.0000534057617,
+        "y": 915.6666803359985,
+        "wires": [
+            [
+                "e792356e.b67778"
+            ]
+        ]
+    },
+    {
+        "id": "e792356e.b67778",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar newObj = {\n    type: \"message\",\n    content: msg.payload,\n    //chatId: 539563556,\n    chatId: flow.get(\"chat\"),\n    inbound: false,\n    messageId: 36,\n    options: {}\n};\nmsg.payload = newObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1038.0000610351562,
+        "y": 920.6666812896729,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "ea968763.ee0098",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 453,
+        "y": 697,
+        "wires": []
+    },
+    {
+        "id": "499944bd.a6e35c",
+        "type": "http in",
+        "z": "84fce38c.6155d",
+        "name": "translate",
+        "url": "/api/translate",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 453.1000061035156,
+        "y": 947.000020980835,
+        "wires": [
+            [
+                "3bd2be11.dd9d32",
+                "6169946c.f7b59c"
+            ]
+        ]
+    },
+    {
+        "id": "3bd2be11.dd9d32",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "flow.set(\"language\",msg.payload.destlang);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 579.8999938964844,
+        "y": 1008,
+        "wires": [
+            [
+                "fd9908f4.a19548",
+                "7d94757e.49ab3c"
+            ]
+        ]
+    },
+    {
+        "id": "6169946c.f7b59c",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 448.1999816894531,
+        "y": 1034.4000244140625,
+        "wires": []
+    },
+    {
+        "id": "fd9908f4.a19548",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 783.0000228881836,
+        "y": 1008.3999919891357,
+        "wires": []
+    },
+    {
+        "id": "546ec1c9.33f2b",
+        "type": "visual-recognition-v3",
+        "z": "84fce38c.6155d",
+        "name": "Faces",
+        "apikey": "__PWRD__",
+        "image-feature": "detectFaces",
+        "lang": "en",
+        "x": 574.6666259765625,
+        "y": 341,
+        "wires": [
+            [
+                "a3d00acc.d63478",
+                "cbfd3e67.9df3d"
+            ]
+        ]
+    },
+    {
+        "id": "8f88a35c.1f374",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 662.6666259765625,
+        "y": 313.33331298828125,
+        "wires": []
+    },
+    {
+        "id": "5b397b18.ce3474",
+        "type": "switch",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "property": "originalMessage.caption",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "face",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Guess my age",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "guess my age",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 4,
+        "x": 545.8333683013916,
+        "y": 407.0000648498535,
+        "wires": [
+            [
+                "546ec1c9.33f2b"
+            ],
+            [
+                "546ec1c9.33f2b"
+            ],
+            [
+                "546ec1c9.33f2b"
+            ],
+            [
+                "45082737.c066d8"
+            ]
+        ]
+    },
+    {
+        "id": "cbfd3e67.9df3d",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar result = msg.result.images[0].faces[0].age;\nvar average = (result.max + result.min)/2;\nvar output = \"I think you are \" + average + \" years old.\";\nmsg.payload = output;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 899.6666793823242,
+        "y": 338.66667652130127,
+        "wires": [
+            [
+                "573a6460.f54a8c"
+            ]
+        ]
+    },
+    {
+        "id": "573a6460.f54a8c",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nvar newObj = {\n    type: \"message\",\n    content: msg.payload,\n    //chatId: 539563556,\n    chatId: flow.get(\"chat\"),\n    inbound: false,\n    messageId: 36,\n    options: {}\n};\nmsg.payload = newObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1027.6666259765625,
+        "y": 351.6666564941406,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "46b066fb.6b8f18",
+        "type": "chatbot-message",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "message": [
+            {
+                "message": "Write \"Begin\" to choose your language and begin translating, upload a selfy with the caption \"Guess my age\" for a fun game, or upload an image and i'll tell you what it is. "
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "x": 882.6666870117188,
+        "y": 662.6666088104248,
+        "wires": [
+            [
+                "d6792268.4d7a7"
+            ]
+        ]
+    },
+    {
+        "id": "74a85107.ad687",
+        "type": "switch",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "property": "originalMessage.text",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/start",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 761.8333435058594,
+        "y": 664.6666650772095,
+        "wires": [
+            [
+                "46b066fb.6b8f18",
+                "69047a30.634e64"
+            ]
+        ]
+    },
+    {
+        "id": "d6792268.4d7a7",
+        "type": "delay",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1018.6666831970215,
+        "y": 664.6666240692139,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "95e7cd71.75312",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 130.00000762939453,
+        "y": 603.5000267028809,
+        "wires": []
+    },
+    {
+        "id": "f6580f95.dfed6",
+        "type": "watson-speech-to-text",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "alternatives": 1,
+        "speakerlabels": true,
+        "smartformatting": false,
+        "lang": "en-US",
+        "langhidden": "en-US",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "band": "NarrowbandModel",
+        "bandhidden": "",
+        "password": "XcykOcS7Pwis",
+        "payload-response": true,
+        "default-endpoint": true,
+        "service-endpoint": "https://stream.watsonplatform.net/speech-to-text/api",
+        "x": 326.37501525878906,
+        "y": 606.0000267028809,
+        "wires": [
+            [
+                "c7f221c8.e14ca",
+                "b9d6336e.64817"
+            ]
+        ]
+    },
+    {
+        "id": "c7f221c8.e14ca",
+        "type": "debug",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 397.5,
+        "y": 657.5,
+        "wires": []
+    },
+    {
+        "id": "2bf714f.e4154ec",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "msg.payload = msg.payload.content;\nmsg.originalMessage.text = msg.payload;\nflow.set(\"type\",\"audio\");\nflow.set(\"chat\",msg.originalMessage.chatId);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 270.12501525878906,
+        "y": 548.7500243186951,
+        "wires": [
+            [
+                "f6580f95.dfed6"
+            ]
+        ]
+    },
+    {
+        "id": "ae4f6077.6de0f",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nflow.set(\"type\",\"text\")\nflow.set(\"chat\",msg.originalMessage.chatId);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 393.7500190734863,
+        "y": 463.00007247924805,
+        "wires": [
+            [
+                "9b7a19dc.2fa7e8"
+            ]
+        ]
+    },
+    {
+        "id": "37416ea1.793552",
+        "type": "function",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "func": "\nflow.set(\"chat\",msg.originalMessage.chatId);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 289,
+        "y": 393.79998779296875,
+        "wires": [
+            [
+                "a89e9dec.6e47f"
+            ]
+        ]
+    },
+    {
+        "id": "69047a30.634e64",
+        "type": "chatbot-message",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "message": [
+            {
+                "message": "You don't have to type, I can also understand your voice!"
+            }
+        ],
+        "answer": false,
+        "track": false,
+        "x": 877.3999633789062,
+        "y": 698.7999877929688,
+        "wires": [
+            [
+                "14526004.34d01"
+            ]
+        ]
+    },
+    {
+        "id": "14526004.34d01",
+        "type": "delay",
+        "z": "84fce38c.6155d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1045.4000244140625,
+        "y": 696.7999877929688,
+        "wires": [
+            [
+                "f952019e.af0f"
+            ]
+        ]
+    },
+    {
+        "id": "115894e8.1b7d2b",
+        "type": "chatbot-telegram-node",
+        "z": "",
+        "botname": "Wryss",
+        "usernames": "",
+        "polling": "1000",
+        "store": "",
+        "log": "",
+        "parseMode": ""
+    }
+]
