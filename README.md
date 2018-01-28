@@ -16,7 +16,7 @@ It was quite difficult at first to understand the concept behind node-red vs. tr
 
 ## Accomplishments that we're proud of
 
-Having a finished hack despite the many hours that were wasted on trying to debug.
+Having a finished hack despite the many hours that were wasted on trying to debug. Having our project compiled in a nice big JSON file to show the world.
 
 ## What we learned
 
