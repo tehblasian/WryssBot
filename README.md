@@ -22,4 +22,4 @@ Having a finished hack despite the many hours that were wasted on trying to debu
 
 We learned that node-red is a very powerful tool once you really understand how it works, but that getting there isn't the most pleasant experience.
 
-## What's next for WryssBot
+For pictures and more info visit: https://devpost.com/software/wryssbot
